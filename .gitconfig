@@ -1,0 +1,66 @@
+[alias]
+	s = status
+	remotes = remote -v
+	last = log -1 HEAD
+	co = checkout
+	who = shortlog -s --
+	unstage = reset -q HEAD --
+	discard = checkout --
+	nevermind = !git reset --hard HEAD && git clean -df
+	uncommit = reset --mixed HEAD~
+	save = commit -m
+	resave = commit --amend
+	invert = revert
+	last = log -1 HEAD --format = format:%Cred%H
+	summary = status -u -s
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --decorate --date=short
+	lg = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	new-branch = checkout -b
+	rename-branch = branch -m
+	delete-branch = branch -D
+	recent-branches = branch -a --sort=committerdate
+	branchout = checkout -b
+	tags = tag
+	la = "!git config -l | grep alias | cut -c 7-"
+	grep = grep -Ii
+	branches = branch -a
+	stashes = stash list
+	prestage = diff
+	precommit = diff --cached
+	remotes = remote -v
+	sync = !git fetch --all --prune && git rebase --rebase-merges --autostash $1 && :
+	move = mv
+	remove = rm
+	unmerged = branch --no-merged
+	unstash = stash pop
+	what = show
+	untrack = rm -r --cached
+	rewrite = rebase -i
+	amend = commit --amend --no-edit
+	amend-message = commit --amend
+	back = checkout -
+	contributors = shortlog -s -n --no-merges
+	unmerged = diff --name-only --diff-filter=U
+	patch = add --patch
+	tuck = stash save
+	untuck = stash pop stash@{0}
+	cp = cherry-pick
+	cl = clone
+	ci = commit
+	dc = diff --cached
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
+	l = log --all --graph --pretty='format:%C(yellow)%h%Cblue%d%Creset %s.%C(white) %an, %ar%Creset'
+	d =qq diff -w
+[user]
+	name = name
+	email = email
+[color]
+	ui = auto
+[color "diff"]
+	old = red dim
+	new = green italic
+[diff]
+	compactionHeuristic = true
+[pager]
+	diff = sed \"s/^\\([^-+ ]*\\)[-+ ]/\\\\1/\"
+  
